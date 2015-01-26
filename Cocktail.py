@@ -1,6 +1,5 @@
 #Cocktail.py
 
-
 class Cocktail(object):
 	"""An object representing a Cocktail. Has a name, location (a page
 	reference and corresponding bar book), list of ingredients,
@@ -19,6 +18,14 @@ class Cocktail(object):
 		self.strength = strength
 		self.barware = barware
 		self.glassware = glassware
+		
+	def __str__(self):
+		s=''
+		s=s+self.name
+		s=s+'\nBook: %s\nPage: %d\nIngredients:\n' % (self.loc[0], self.loc[1])
+		for ingredient in self.ingr:
+			s=s+'%s \n' % (ingredient)
+		return s
 
 	def get_name(self):
 		"""Returns the name of the cocktail"""
@@ -31,3 +38,29 @@ class Cocktail(object):
 	def get_ingr(self):
 		"""Returns the list of ingredients"""
 		return self.ingr
+
+	def get_str(self):
+		"""Returns the '%'abv as a float"""
+		return self.strength
+
+
+class Ingredient(object):
+	"""An object representing an ingredient in a cocktail, such as a lime or liquor. 
+	"""
+
+	def __init__(self, name='Name', replace=[]):
+		"""Creates an ingredient."""
+		self.name = name
+		self.replace = replace
+
+	def set_name(self, name):
+		self.name = name
+
+	def get_name(self):
+		return self.name
+
+	def set_replace(self, replacelist):
+		self.replace = replacelist
+
+	def get_replace(self):
+		return self.replace
